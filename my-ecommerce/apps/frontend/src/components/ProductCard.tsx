@@ -11,36 +11,34 @@ const ProductCard = (props: Product) => {
                 p="6"
                 rounded="md"
                 bg="white"
-                border="black 13px shadow"
                 fontFamily="Rubik"
             >
                 <Flex>
-                    <Box w="100%">
-                        <Box className="digiName">
-                            <Text fontSize="1.3em" color="#505050">
-                                {props.title}
-                            </Text>
-                        </Box>
-                        <Box className="digiLevel">
-                        </Box>
-                        <Flex m={3} flexShrink="0.3" className="digiLevel" justifyContent={"center"}>
-                            <Image width="100px" src={props.thumbnail}></Image>
-                        </Flex>
-                        <Box flexShrink="0.3" className="digiLevel" justifyContent={"center"}>
-                            <Box m={3}>
-                                <Text fontSize={25} fontWeight="medium">{props.price}$</Text>
-                            </Box>
-                            <Flex justifyContent={"center"}>
-                                    <Button fontWeight={'medium'} className='viewMore' bg="#7BE0AD" color="white" m={2}>
-                                        View More
-                                    </Button>
-                                <Button  fontWeight={'medium'} className='viewMore' bg="#e0b0d5" color="white" m={2}>
-                                    Add to cart
-                                </Button>
-                            </Flex>
-                        </Box>
-                    </Box>
-                </Flex>
+                    <Flex
+                        id="box-container"
+                        w="100%"
+                        h="300px"
+                        direction="column"
+                        justify="space-between"
+                    >
+                         <Box className="digiName" h="50px" overflow={"hidden"}>
+                             <Text fontSize="1em" color="#505050">
+                                 {props.title}
+                             </Text>
+                         </Box>
+                        <Flex m={3} flexShrink="0.3" className="digiLevel" justify="center">
+                            <Image boxSize="100px" objectFit="contain" src={props.images[0]} alt={props.title} />
+                         </Flex>
+                             <Box m={1}>
+                                 <Text fontSize={25} fontWeight="medium">{props.price}$</Text>
+                             </Box>
+                            <Flex className="button-container" justify="center" gap={2} flexWrap={"wrap"}>
+                                 <Button  fontWeight={'medium'} className='viewMore' bg="#e0b0d5" color="white" >
+                                     Add to cart
+                                 </Button>
+                             </Flex>
+                    </Flex>
+                 </Flex>
             </Box>
         </>
     )
