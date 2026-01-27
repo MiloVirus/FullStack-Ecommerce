@@ -20,5 +20,12 @@ export const fetchProducts = async (filters: {
     (p:Product) => p.price >= filters.minPrice && p.price <= filters.maxPrice
   );
 
+  
+
   return products;
+}
+
+export const fetchProductById = async (id: number): Promise<Product> => {
+  const res = await axios.get(`https://dummyjson.com/products/${id}`)
+  return res.data
 }

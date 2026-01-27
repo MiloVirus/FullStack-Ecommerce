@@ -18,7 +18,7 @@ export default function ProductsPage() {
         <Box overflowY="auto" h={["70%", "70%", "90%"]} borderRadius="20px">
           <SimpleGrid
             bg="gray.50"
-            columns={{ sm: 2, md: 2, lg: 3 }}
+            columns={{ sm: 2, md: 2, lg: 3, xl: 4 }}
             gap="15px"
             p="10"
             textAlign="center"
@@ -34,7 +34,6 @@ export default function ProductsPage() {
                 title={element.title}
                 price={element.price}
                 category={element.category}
-                thumbnail={element.thumbnail}
                 images={element.images}
               />
             ))}

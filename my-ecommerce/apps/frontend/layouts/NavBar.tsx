@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import NavBarCartCount from "../src/components/NavBarCartCount";
 
 const NavBar = () => {
   const [onSwitch, setOnSwitch] = useState(false);
@@ -95,6 +96,9 @@ const NavBar = () => {
           >
             Create Account
           </Button></Link>
+          <Flex alignSelf="center" p={1}>
+            <NavBarCartCount />
+          </Flex>
         </Flex>
 
         {
