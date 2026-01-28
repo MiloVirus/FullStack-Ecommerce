@@ -6,4 +6,6 @@ export type Product = {
   images: string[];
   rating?: number;
   brand?: string;
+  reviews: [];
+  shippingInformation: string;
 };

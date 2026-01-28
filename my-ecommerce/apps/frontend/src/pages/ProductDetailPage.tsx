@@ -23,23 +23,30 @@ const ProductDetailPage = () => {
 
     if (isLoading) return <div>Loading...</div>
     if (error) return <div>Error loading product</div>
+
+    const getStars = (rating: number) => {
+        if (rating < 1) return "☆☆☆☆☆"
+        if (rating < 2) return "★☆☆☆☆"
+        if (rating < 3) return "★★☆☆☆"
+        if (rating < 4) return "★★★☆☆"
+        if (rating < 5) return "★★★★☆"
+    return "★★★★★"
+}
     return (
         <Container maxW="container.xl" py={8}>
             <Grid
                 templateColumns={{ base: "1fr", md: "3fr 2fr" }}
                 gap={8}
             >
-                {/* LEFT: Images */}
                 <GridItem>
                     <SimpleGrid columns={{ base: 1, md: 1
                      }} gap={4}>
-                        <Image src={data?.images[0]} alt="product" />
+                        <Image src={data?.images[0]} alt="product" maxW={680} w={"100%"}/>
                     </SimpleGrid>
                 </GridItem>
 
-                {/* RIGHT: Product info */}
-                <GridItem>
-                    <Stack gap={4}>
+                <GridItem display="flex" alignItems="center">
+                    <Stack gap={4} flex={1}>
                         <Text fontSize="sm" color="gray.500">
                            {data?.brand}
                         </Text>
@@ -49,29 +56,23 @@ const ProductDetailPage = () => {
                         </Heading>
 
                         {/* Rating */}
-                        <HStack gap={2}>
-                            <Text>⭐⭐⭐⭐⭐</Text>
+                        <HStack gap={2} m={{base:'auto',sm:'auto', md:'0'}}>
+                            <Text>{getStars(data?.rating ?? 0)}</Text>
                             <Text fontSize="sm" color="gray.500">
-                                2 reviews
+                                {data?.reviews.length} reviews
                             </Text>
                         </HStack>
 
                         {/* Price */}
                         <Text fontSize="2xl" fontWeight="bold">
-                            £69.00
+                            ${data?.price}
                         </Text>
 
                         {/* Delivery */}
                         <Box bg="green.700" color="white" p={3} borderRadius="md">
-                            Free standard delivery on orders over £50
+                            {data?.shippingInformation}
                         </Box>
 
-                        {/* Color */}
-                        <Box>
-                            <Text fontWeight="semibold">Colour</Text>
-                            <Text>Navy Mix</Text>
-                        </Box>
-                        {/* CTA */}
                         <Button
                             size="lg"
                             bg="green.400"
