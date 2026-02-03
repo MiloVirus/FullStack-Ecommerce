@@ -6,7 +6,7 @@ import CartSummary from "../components/CartSummary"
 const CartPage = () => {
   return (
     <Flex w={"100%"} minH="100vh" justifyContent="center">
-        <Box w={"50%"} >
+        <Box w={["100%","80%","80%","60%"]} >
           <Box>
             <CartSummary />
           </Box>

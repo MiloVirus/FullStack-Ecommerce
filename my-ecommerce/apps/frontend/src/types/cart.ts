@@ -1,5 +1,7 @@
-import type { Product}  from "./Product";
-
-export type CartItem = Omit<Product, "category"> & {
-  quantity: number;
-};
+export type CartItem = {
+  id: number
+  title: string
+  price: number
+  images: string[]
+  quantity: number
+}

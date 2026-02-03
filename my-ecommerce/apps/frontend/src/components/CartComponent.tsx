@@ -1,4 +1,5 @@
 import { useCartStore } from '../store/useCartStore'
+import { Box } from '@chakra-ui/react';
 import CartCard from './CartCard'
 
 type CartItem = {
@@ -14,9 +15,10 @@ const CartComponent = () => {
 
   return (
     <div>
-      {items.map((item: CartItem) => (
+      {items.length >= 1 ? (items.map((item: CartItem) => (
         <CartCard key={item.id} item={item} />
-      ))}
+      ))) : (<Box fontSize={"lg"} mt={10}>Your cart is empty.</Box>
+      )}
     </div>
   )
 }

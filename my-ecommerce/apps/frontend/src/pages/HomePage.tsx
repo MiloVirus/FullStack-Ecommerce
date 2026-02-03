@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Text, SimpleGrid } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useProducts } from '../hooks/useProduct'
-import HomePageCard from '../components/HomePageCard'
+import HomePageProductCard from '../components/HomePageProductCard'
 import type { Product } from '../types/Product'
 
 
@@ -13,7 +13,7 @@ const { data, isLoading, isError, error } = useProducts();
   if (isError) return <div>Error: {error.message}</div>;
 
  const featuredProducts = data.filter(
-  (p: Product) => (p.rating ?? 0) >= 4.5
+  (p: Product) => (p.rating ?? 0) >= 4.7
 );
 
   return (
@@ -43,18 +43,18 @@ const { data, isLoading, isError, error } = useProducts();
               </Box>
           </Flex>
       </Flex>
-      <Box w={["80%","80%","70%","70%"]} m="auto">
+      <Box w={["100%","80%","70%","70%"]} m="auto">
         <SimpleGrid
             bg='gray.50'
             columns={{ sm: 1, md: 2, lg: 2, xl: 4 }}
            
-            p='10'
+            p={["0","10","10"]}
             textAlign='center'
             rounded='lg'
             color='gray.400'
           >
             {featuredProducts.map((element) => (
-              <HomePageCard
+              <HomePageProductCard
                 key={element.id}
                 id={element.id}
                 title={element.title}

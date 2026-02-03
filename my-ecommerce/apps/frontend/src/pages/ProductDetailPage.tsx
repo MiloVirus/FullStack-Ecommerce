@@ -13,9 +13,12 @@ import {
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { useProductById } from "../hooks/useProductById";
+import { useCartStore } from "../store/useCartStore";
+
+
 
 const ProductDetailPage = () => {
-
+const addItem = useCartStore((state) => state.addItem);
     const {id} = useParams();
     const productId = Number(id); ;
 
@@ -23,6 +26,7 @@ const ProductDetailPage = () => {
 
     if (isLoading) return <div>Loading...</div>
     if (error) return <div>Error loading product</div>
+    
 
     const getStars = (rating: number) => {
         if (rating < 1) return "☆☆☆☆☆"
@@ -31,6 +35,17 @@ const ProductDetailPage = () => {
         if (rating < 4) return "★★★☆☆"
         if (rating < 5) return "★★★★☆"
     return "★★★★★"
+}
+
+const addItemToCart = () => {
+  if (!data) return
+
+  addItem({
+    id: data.id,
+    title: data.title,
+    price: data.price,
+    images: [data.images[0]],
+  })
 }
     return (
         <Container maxW="container.xl" py={8}>
@@ -74,12 +89,13 @@ const ProductDetailPage = () => {
                         </Box>
 
                         <Button
+                            onClick={addItemToCart}
                             size="lg"
                             bg="green.400"
                             color="black"
                             _hover={{ bg: "green.500" }}
                         >
-                            Add to bag
+                            Add to cart
                         </Button>
                     </Stack>
                 </GridItem>

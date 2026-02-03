@@ -22,7 +22,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <Flex flexDir="column" id="mainNavBar" w="100%">
+    <Flex flexDir="column" id="mainNavBar" w="100%" position={"sticky"} top={0} zIndex={1000} bg="white" boxShadow="sm">
       <Flex fontFamily="Rubik" justify={"center"}>
         <Flex
           id="desktopDisplay"
@@ -124,7 +124,7 @@ const NavBar = () => {
             justifyContent={"center"}
             w="100%"
           >
-            <Text alignSelf="center" p={2} color="#393C44">
+            <Text alignSelf="center" p={2} color="#393C44" mr={14}>
               KeySpace
             </Text>
           </Flex>
@@ -145,7 +145,7 @@ const NavBar = () => {
           color="#5A5A5A"
           variant="ghost"
           aria-label="home"
-          my={5}
+          my={1}
           mx={2}
           w="100%"
         >
@@ -157,7 +157,7 @@ const NavBar = () => {
           color="#5A5A5A"
           variant="ghost"
           aria-label="about"
-          my={5}
+          my={1}
           mx={2}
           w="100%"
         >
@@ -168,7 +168,7 @@ const NavBar = () => {
           color="#5A5A5A"
           variant="ghost"
           aria-label="contact"
-          my={5}
+          my={1}
           mx={2}
           w="100%"
         >
@@ -180,13 +180,16 @@ const NavBar = () => {
           variant="ghost"
           aria-label="contact"
           bg="#7BE0AD"
-          my={5}
+          my={1}
           pr={9}
           pl={9}
           w="100%"
         >
           <Link to="/registration" relative="path">Create Account</Link>
         </Button>
+        <Flex alignSelf="center" p={1}>
+            <NavBarCartCount />
+          </Flex>
       </Flex>
     </Flex>
   );

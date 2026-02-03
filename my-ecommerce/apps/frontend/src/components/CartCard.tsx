@@ -23,26 +23,27 @@ const CartCard = ({ item }: CartCardProps) => {
     <Flex
       key={item.id}
       align={"center"}
-      justify={"space-between"}
-      gap={4}
-      padding={2}
-      margin={2}
+      justify={"space-around"}
+      gap={[0,4]}
+      padding={[1,2]}
+      margin={[0,1]}
       borderRadius={8}
+      h={100}
     >
-      <Image boxSize="100px" objectFit="contain" src={item.images[0]} borderRadius={8} padding={3} background={"#dccdf8"} alt={item.title} />
-      <Box flex={1} fontWeight={"bold"}> {item.title}</Box>
-      <Box flex={1}>${item.price}</Box>
-      <Box flex={1} >{item.quantity}</Box>
-      <Button backgroundColor={"gray.300"} textStyle={"xl"} fontWeight={"bold"} onClick={() => decreaseQuantity(itemId)}>-</Button>
-      <Button backgroundColor={"gray.300"} textStyle={"xl"} fontWeight={"bold"} onClick={() => addItem({
-        id: itemId,
-        title: item.title,
-        price: item.price,
-        images: item.images,
-      })}>+</Button>
-      <Box flex={1}>
-        {item.quantity > 1 ? item.quantity * item.price : null}
-      </Box>
+      <Image boxSize={["70px","50px","100px"]} objectFit="contain" src={item.images[0]} borderRadius={8} padding={[0,2,3]} background={"#dccdf8"} alt={item.title} />
+      <Box w={"20%"}  fontWeight={"bold"} fontSize={["12px", "15px"]}>{item.title}</Box>
+      <Box w={"15%"} fontSize={["10px", "15px"]} >${item.price}</Box>
+      <Box w={"10%"}  fontSize={["10px", "15px"]} >{item.quantity}</Box>
+       <Flex flexDirection={["column","row"]} gap={2} >
+          <Button backgroundColor={"purple"}  px={2} minW="20px" w={["20px", "35px"]} h={["20px", "35px"]} fontWeight={"bold"} onClick={() => decreaseQuantity(itemId)}>-</Button>
+          <Button backgroundColor={"purple"}  fontWeight={"bold"}  px={2} minW="20px" w={["20px", "35px"]} h={["20px", "35px"]} onClick={() => addItem({
+            id: itemId,
+            title: item.title,
+            price: item.price,
+            images: item.images,
+          })}>+</Button>
+       </Flex>
+        
 
     </Flex>
   )
