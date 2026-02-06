@@ -5,8 +5,10 @@ export const fetchProducts = async (filters: {
   category: string;
   minPrice: number;
   maxPrice: number;
+  limit : number;
+  skip: number;
 }): Promise<Product[]> => {
-  const res = await axios.get("https://dummyjson.com/products?limit=50");
+  const res = await axios.get(`https://dummyjson.com/products?limit=${filters.limit}&skip=${filters.skip}`);
 
   let products = res.data.products;
 

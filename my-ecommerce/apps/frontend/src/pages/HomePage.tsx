@@ -7,7 +7,7 @@ import type { Product } from '../types/Product'
 
 const HomePage = () => {
 
-const { data, isLoading, isError, error } = useProducts();
+const { data, isLoading, isError, error } = useProducts(0,10);
 
  if (isLoading || !data) return <div>Cargando productos...</div>;
   if (isError) return <div>Error: {error.message}</div>;

@@ -16,10 +16,9 @@ export const FiltersSidebar = () => {
   }
 
   return (
-    <aside style={{ padding: "1rem", borderRight: "1px solid #ccc", width: "250px" }}>
+    <aside style={{ padding: "1rem", width: "250px" }}>
       <h2>Filters</h2>
 
-      {/* CATEGORY */}
       <label>
         Category:
         <select value={category ?? "all"} onChange={handleCategoryChange}>
@@ -32,7 +31,6 @@ export const FiltersSidebar = () => {
 
       <br /><br />
 
-      {/* MIN PRICE */}
       <label>
         Min Price:
         <input

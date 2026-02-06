@@ -1,11 +1,14 @@
 import {create} from 'zustand';
 
-type ProductFiltersState = {
+type FiltersState = {
   category: string;
   minPrice: number;
   maxPrice: number;
-  setFilters: (filters: Partial<Omit<ProductFiltersState, 'setFilters'>>) => void;  
 };
+
+type ProductFiltersState = FiltersState & {
+  setFilters: (filters: Partial<FiltersState>) => void;
+}
 
 export const useProductFilters = create<ProductFiltersState>((set) => ({
   category: "",
